@@ -1,5 +1,6 @@
 import {
   IsEmail,
+  IsEnum,
   IsMobilePhone,
   IsNotEmpty,
   IsOptional,
@@ -8,6 +9,7 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
+import { USER_ROLE } from 'src/modules/user/entities/user.entity';
 
 export class RegisterUserDto {
   @IsNotEmpty()
@@ -27,10 +29,13 @@ export class RegisterUserDto {
   password: string;
 
   @IsOptional()
+  role?: USER_ROLE | null;
+
+  @IsOptional()
   @IsMobilePhone(
     'ar-EG',
     {},
     { message: 'Please provide a valid EG mobile phone' },
   )
-  mobilePhone?: string;
+  mobilePhone?: string | null;
 }
