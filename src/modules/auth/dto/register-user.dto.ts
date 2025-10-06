@@ -33,8 +33,4 @@ export class RegisterUserDto {
     { message: 'Please provide a valid EG mobile phone' },
   )
   mobilePhone?: string;
-
-  @IsOptional()
-  @IsUrl()
-  avatar?: string;
 }

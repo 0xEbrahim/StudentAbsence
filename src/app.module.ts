@@ -3,6 +3,7 @@ import { UserModule } from './modules/user/user.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './modules/auth/auth.module';
+import { UserEntity } from './modules/user/entities/user.entity';
 
 @Module({
   imports: [
@@ -20,7 +21,7 @@ import { AuthModule } from './modules/auth/auth.module';
         port: cfg.get<number>('DB_PORT'),
         database: cfg.get<string>('DB_NAME'),
         type: 'postgres',
-        entities: [],
+        entities: [UserEntity],
         synchronize: cfg.get<boolean>('DB_SYNC'),
       }),
     }),
